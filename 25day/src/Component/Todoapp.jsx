@@ -8,8 +8,6 @@ const TodoApp = () => {
   const [isEditing, setIsEditing] = useState(null);
   const [editTaskName, setEditTaskName] = useState('');
   const [editDescription, setEditDescription] = useState('');
-
-  // Add new todo
   const addTodo = () => {
     const newTodo = {
       id: Date.now(),
@@ -21,22 +19,15 @@ const TodoApp = () => {
     setTaskName('');
     setDescription('');
   };
-
-  // Delete todo
   const deleteTodo = (id) => {
     setTodos(todos.filter((todo) => todo.id === id));
   }; 
-  
-
-  // Edit todo
   const editTodo = (id) => {
     const todoToEdit = todos.find((todo) => todo.id === id);
     setIsEditing(id);
     setEditTaskName(todoToEdit.taskName);
     setEditDescription(todoToEdit.description);
   };
-
-  // Save edited todo
   const saveTodo = (id) => {
     const updatedTodos = todos.map((todo) =>
       todo.id === id
@@ -46,20 +37,16 @@ const TodoApp = () => {
     setTodos(updatedTodos);
     setIsEditing(null);
   };
-
-  // Update todo status
   const updateStatus = (id, status) => {
     const updatedTodos = todos.map((todo) =>
       todo.id === id ? { ...todo, status: status } : todo
     );
     setTodos(updatedTodos);
   };
-
-  // Filter todos based on status
   const filteredTodos = todos.filter((todo) => {
     if (filter === 'completed') return todo.status === 'completed';
     if (filter === 'not completed') return todo.status === 'not completed';
-    return true; // Show all
+    return true; 
   });
 
   return (

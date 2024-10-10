@@ -1,4 +1,4 @@
-import TodoApp from "./Component/Display"
+import TodoApp from "./Component/Todoapp"
 
 
 function App() {
